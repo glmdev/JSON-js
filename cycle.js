@@ -22,6 +22,27 @@
     retrocycle, set, stringify, test
 */
 
+if (typeof JSON.rmref !== "function") {
+    JSON.rmref = function rmref(o){
+        function eachRecursive(obj) {
+            for (var k in obj)
+            {
+                if (typeof obj[k] == "object" && obj[k] !== null)
+                    eachRecursive(obj[k]);
+                else {
+                    for ( var key in obj ){
+                        if ( key === "$ref" ){
+                            delete obj[k];
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        eachRecursive(o)
+    }
+}
+
 if (typeof JSON.decycle !== "function") {
     JSON.decycle = function decycle(object, replacer) {
         "use strict";
