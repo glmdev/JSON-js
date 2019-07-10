@@ -40,6 +40,7 @@ if (typeof JSON.rmref !== "function") {
             }
         }
         eachRecursive(o)
+        return o
     }
 }
 
