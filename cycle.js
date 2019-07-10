@@ -32,7 +32,7 @@ if (typeof JSON.rmref !== "function") {
                 else {
                     for ( var key in obj ){
                         if ( key === "$ref" ){
-                            delete obj[k];
+                            obj[k] = "cyclic structure removed";
                             break;
                         }
                     }
