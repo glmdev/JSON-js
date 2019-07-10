@@ -84,8 +84,7 @@ if (typeof JSON.decycle !== "function") {
 
                 old_path = objects.get(value);
                 if (old_path !== undefined) {
-//                     return {$ref: old_path};
-                    return "cyclic object removed"
+                    return {$ref: old_path};
                 }
 
 // Otherwise, accumulate the unique value and its path.
